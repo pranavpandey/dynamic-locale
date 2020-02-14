@@ -17,6 +17,8 @@ A library to perform runtime locale changes on Android 4.1 (API 16) and above de
 
 - [Installation](https://github.com/pranavpandey/dynamic-locale#installation)
 - [Usage](https://github.com/pranavpandey/dynamic-locale#usage)
+    - [Application](https://github.com/pranavpandey/dynamic-locale#application)
+    - [Activity](https://github.com/pranavpandey/dynamic-locale#activity)
     - [Dependency](https://github.com/pranavpandey/dynamic-locale#dependency)
 - [License](https://github.com/pranavpandey/dynamic-locale#license)
 
@@ -37,9 +39,104 @@ dependencies {
 
 ## Usage
 
+[DynamicLocale][dynamic locale] is an interface that can be implemented in the 
+[Application][dynamic application] or [Activity][dynamic activity] class to provide the modified 
+base `context`. It has optional feature to provide `font scale` to make the text smaller or larger. 
+It would be beneficial for some specific locales and theme styles.
+
 > For complete reference, please read the [documentation](https://pranavpandey.github.io/dynamic-locale).
 
----
+### Application
+
+Implement the `DynamicLocale` interface for the `Application` class by using the 
+[DynamicLocaleUtils][dynamic locale utils] helper class and register it in the `AndroidManifest` 
+to apply the locale at runtime.
+
+> While using it for the application class, you should update the `context` when user 
+> configuration changes as Android caches the application in the memory and the 
+> `attachBaseContext(Context)` might not be called each time. 
+>
+> Please check an example [here][dynamic application example].
+
+```java
+public class DynamicApp extends Application implements DynamicLocale {
+
+    @Override
+    public void attachBaseContext(@NonNull Context base) {
+        // Set the dynamic locale.
+        super.attachBaseContext(setLocale(base));
+    }    
+
+    @Override
+    public @Nullable String[] getSupportedLocales() {
+        // Returns an array of supported locales.
+        return new String[] {
+            Locale.ENGLISH.toString(),
+                Locale.GERMAN.toString(),
+                new Locale(DynamicLocaleUtils.ADS_LOCALE_SPANISH, "").toString(),
+                new Locale(DynamicLocaleUtils.ADS_LOCALE_INDONESIA, "").toString(),
+                Locale.ITALIAN.toString(),
+                new Locale(DynamicLocaleUtils.ADS_LOCALE_TURKISH, "").toString(),
+                Locale.CHINESE.toString() };
+    }
+
+    @Override
+    public @NonNull Locale getDefaultLocale(@NonNull Context context) {
+        // Returns the default locale to be used if no dynamic locale support is provided.
+        return DynamicLocaleUtils.getDefaultLocale(context, getSupportedLocales());
+    }
+    
+    @Override
+    public @Nullable Locale getLocale() {
+        // Returns the locale to be applied.
+        return DynamicLocaleUtils.toLocale(DynamicLocaleUtils.ADS_LOCALE_HINDI);
+    }
+
+    @Override
+    public @NonNull Context setLocale(@NonNull Context context) {
+        // Apply the locale according to the configuration.
+        return DynamicLocaleUtils.setLocale(context,
+                DynamicLocaleUtils.getLocale(getLocale(),
+                    getDefaultLocale(context)), getFontScale());
+    }
+
+    @Override
+    public float getFontScale() {
+        // Returns the font scale to be applied.
+        // Use the default font scale.
+        return 1f;
+    }
+}
+```
+
+### Activity
+
+Similarly, it can be used for the `Activity` to apply locale at runtime.
+
+> You should `recreate()` the activity when user configuration changes.
+
+```java
+public class DynamicActivity extends Activity implements DynamicLocale {
+
+    @Override
+    public void attachBaseContext(@NonNull Context base) {
+        // Set the dynamic locale.
+        super.attachBaseContext(setLocale(base));
+    }    
+
+    ...
+
+    @Override
+    public @NonNull Context setLocale(@NonNull Context context) {
+        // Apply the locale according to the configuration.
+        return DynamicLocaleUtils.setLocale(context,
+                DynamicLocaleUtils.getLocale(getLocale(),
+                    getDefaultLocale(context)), getFontScale());
+    }
+
+    ...
+}
+```
 
 ### Dependency
 
@@ -73,3 +170,9 @@ Pranav Pandey
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+    
+[dynamic locale]: https://github.com/pranavpandey/dynamic-locale/blob/master/dynamic-locale/src/main/java/com/pranavpandey/android/dynamic/locale/DynamicLocale.java
+[dynamic application]: https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/DynamicApplication.java
+[dynamic application example]: https://github.com/pranavpandey/dynamic-support/blob/5d94b3e700e49b55008069f42763965f6d3bf033/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/DynamicApplication.java#L206
+[dynamic activity]: https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/activity/DynamicSystemActivity.java
+[dynamic locale utils]: https://github.com/pranavpandey/dynamic-locale/blob/master/dynamic-locale/src/main/java/com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.java
