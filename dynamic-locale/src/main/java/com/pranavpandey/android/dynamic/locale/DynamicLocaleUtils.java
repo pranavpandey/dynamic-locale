@@ -82,9 +82,9 @@ public class DynamicLocaleUtils {
     }
 
     /**
-     * Checks whether the layout is Right to Left.
+     * Checks whether the layout is RTL (right-to-left).
      *
-     * @return {@code true} if the layout is Right to Left.
+     * @return {@code true} if the layout is RTL (right-to-left).
      *
      * @see ViewCompat#LAYOUT_DIRECTION_RTL
      */
