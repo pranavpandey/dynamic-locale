@@ -20,7 +20,7 @@ buildscript {
             'minSdk'    : 16,
             'targetSdk' : 29,
             'buildTools': '29.0.3',
-            'dynamic'   : '3.1.0'
+            'dynamic'   : '3.2.0'
     ]
 
     repositories {
@@ -62,8 +62,8 @@ ext {
     mavenGroup = 'com.pranavpandey.android'
     mavenArtifactId = 'dynamic-locale'
     mavenInceptionYear = 2019
-    mavenVersion = '1.0.1'
-    mavenVersionCode = 2
+    mavenVersion = '1.1.0'
+    mavenVersionCode = 3
 
     developerId = 'pranavpandey'
     developerName = 'Pranav Pandey'
