@@ -58,6 +58,16 @@ public class DynamicLocaleUtils {
     public static final String ADS_LOCALE_INDONESIA = "in";
 
     /**
+     * Constant value for the Russian (Русский) locale.
+     */
+    public static final String ADS_LOCALE_RUSSIAN = "ru";
+
+    /**
+     * Constant value for the Portuguese (Português) locale.
+     */
+    public static final String ADS_LOCALE_PORTUGUESE = "pt";
+
+    /**
      * Constant value for the Turkish (Türkçe) locale.
      */
     public static final String ADS_LOCALE_TURKISH = "tr";
@@ -118,7 +128,7 @@ public class DynamicLocaleUtils {
     }
 
     /**
-     * Get default locale language from the supported locales.
+     * Get the default locale language from the supported locales.
      *
      * @param context The context to get the configuration.
      * @param supportedLocales The supported locales.
@@ -223,5 +233,16 @@ public class DynamicLocaleUtils {
                 context.getResources().getDisplayMetrics());
 
         return context;
+    }
+
+    /**
+     * Returns the current locale for the supplied context.
+     *
+     * @param context The context to get the resources.
+     *
+     * @return The current locale for the supplied context.
+     */
+    public static @NonNull Locale getCurrentLocale(@NonNull Context context) {
+        return ConfigurationCompat.getLocales(context.getResources().getConfiguration()).get(0);
     }
 }
