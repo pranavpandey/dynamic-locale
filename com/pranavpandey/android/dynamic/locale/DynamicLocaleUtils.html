@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -137,19 +137,31 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <tr class="rowColor">
 <td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#ADS_LOCALE_HINDI">ADS_LOCALE_HINDI</a></span></code>
-<div class="block">Constant value for the Hindi (हिंदी) locale.</div>
+<div class="block">Constant value for the Hindi locale.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#ADS_LOCALE_INDONESIA">ADS_LOCALE_INDONESIA</a></span></code>
-<div class="block">Constant value for the Indonesian (Indonesia) locale.</div>
+<div class="block">Constant value for the Indonesian locale.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#ADS_LOCALE_PORTUGUESE">ADS_LOCALE_PORTUGUESE</a></span></code>
+<div class="block">Constant value for the Portuguese locale.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#ADS_LOCALE_RUSSIAN">ADS_LOCALE_RUSSIAN</a></span></code>
+<div class="block">Constant value for the Russian locale.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#ADS_LOCALE_SPANISH">ADS_LOCALE_SPANISH</a></span></code>
-<div class="block">Constant value for the Spanish (Español) locale.</div>
+<div class="block">Constant value for the Spanish locale.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -161,7 +173,7 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <tr class="rowColor">
 <td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#ADS_LOCALE_TURKISH">ADS_LOCALE_TURKISH</a></span></code>
-<div class="block">Constant value for the Turkish (Türkçe) locale.</div>
+<div class="block">Constant value for the Turkish locale.</div>
 </td>
 </tr>
 </table>
@@ -198,31 +210,37 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#getDefaultLocale-android.content.Context-java.lang.String:A-">getDefaultLocale</a></span>(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</a>&nbsp;context,
-                <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;supportedLocales)</code>
-<div class="block">Get default locale language from the supported locales.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#getCurrentLocale-android.content.Context-">getCurrentLocale</a></span>(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</a>&nbsp;context)</code>
+<div class="block">Returns the current locale for the supplied context.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#getDefaultLocale-android.content.Context-java.lang.String:A-">getDefaultLocale</a></span>(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</a>&nbsp;context,
+                <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;supportedLocales)</code>
+<div class="block">Get the default locale language from the supported locales.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#getLayoutDirection--">getLayoutDirection</a></span>()</code>
 <div class="block">Returns the layout direction for the selected locale.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#getLocale-java.util.Locale-java.util.Locale-">getLocale</a></span>(<a href="https://developer.android.com/reference/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale,
          <a href="https://developer.android.com/reference/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;defaultLocale)</code>
 <div class="block">Returns the locale after performing safety checks.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#isLayoutRtl--">isLayoutRtl</a></span>()</code>
 <div class="block">Checks whether the layout is RTL (right-to-left).</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static <a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#setLocale-android.content.Context-java.util.Locale-float-">setLocale</a></span>(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</a>&nbsp;context,
          <a href="https://developer.android.com/reference/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale,
@@ -230,7 +248,7 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <div class="block">Set the locale for a given context.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static <a href="https://developer.android.com/reference/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.html#toLocale-java.lang.String-">toLocale</a></span>(<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;locale)</code>
 <div class="block">Get locale from the locale string in the format: <code>language,region</code>.</div>
@@ -279,7 +297,7 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>ADS_LOCALE_SPANISH</h4>
 <pre>public static final&nbsp;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ADS_LOCALE_SPANISH</pre>
-<div class="block">Constant value for the Spanish (Español) locale.</div>
+<div class="block">Constant value for the Spanish locale.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../constant-values.html#com.pranavpandey.android.dynamic.locale.DynamicLocaleUtils.ADS_LOCALE_SPANISH">Constant Field Values</a></dd>
@@ -293,7 +311,7 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>ADS_LOCALE_HINDI</h4>
 <pre>public static final&nbsp;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ADS_LOCALE_HINDI</pre>
-<div class="block">Constant value for the Hindi (हिंदी) locale.</div>
+<div class="block">Constant value for the Hindi locale.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../constant-values.html#com.pranavpandey.android.dynamic.locale.DynamicLocaleUtils.ADS_LOCALE_HINDI">Constant Field Values</a></dd>
@@ -307,10 +325,38 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>ADS_LOCALE_INDONESIA</h4>
 <pre>public static final&nbsp;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ADS_LOCALE_INDONESIA</pre>
-<div class="block">Constant value for the Indonesian (Indonesia) locale.</div>
+<div class="block">Constant value for the Indonesian locale.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../constant-values.html#com.pranavpandey.android.dynamic.locale.DynamicLocaleUtils.ADS_LOCALE_INDONESIA">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ADS_LOCALE_RUSSIAN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ADS_LOCALE_RUSSIAN</h4>
+<pre>public static final&nbsp;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ADS_LOCALE_RUSSIAN</pre>
+<div class="block">Constant value for the Russian locale.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../constant-values.html#com.pranavpandey.android.dynamic.locale.DynamicLocaleUtils.ADS_LOCALE_RUSSIAN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ADS_LOCALE_PORTUGUESE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ADS_LOCALE_PORTUGUESE</h4>
+<pre>public static final&nbsp;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ADS_LOCALE_PORTUGUESE</pre>
+<div class="block">Constant value for the Portuguese locale.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../constant-values.html#com.pranavpandey.android.dynamic.locale.DynamicLocaleUtils.ADS_LOCALE_PORTUGUESE">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -321,7 +367,7 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <li class="blockList">
 <h4>ADS_LOCALE_TURKISH</h4>
 <pre>public static final&nbsp;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ADS_LOCALE_TURKISH</pre>
-<div class="block">Constant value for the Turkish (Türkçe) locale.</div>
+<div class="block">Constant value for the Turkish locale.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../constant-values.html#com.pranavpandey.android.dynamic.locale.DynamicLocaleUtils.ADS_LOCALE_TURKISH">Constant Field Values</a></dd>
@@ -429,7 +475,7 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <h4>getDefaultLocale</h4>
 <pre>public static&nbsp;<a href="https://developer.android.com/reference/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;getDefaultLocale(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</a>&nbsp;context,
                                       <a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;supportedLocales)</pre>
-<div class="block">Get default locale language from the supported locales.</div>
+<div class="block">Get the default locale language from the supported locales.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>context</code> - The context to get the configuration.</dd>
@@ -460,7 +506,7 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <a name="setLocale-android.content.Context-java.util.Locale-float-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setLocale</h4>
 <pre>public static&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</a>&nbsp;setLocale(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</a>&nbsp;context,
@@ -474,6 +520,22 @@ extends <a href="https://developer.android.com/reference/java/lang/Object.html?i
 <dd><code>fontScale</code> - The font scale to be used for the context resources.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The modified context after applying the locale.</dd>
+</dl>
+</li>
+</ul>
+<a name="getCurrentLocale-android.content.Context-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getCurrentLocale</h4>
+<pre>public static&nbsp;<a href="https://developer.android.com/reference/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;getCurrentLocale(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</a>&nbsp;context)</pre>
+<div class="block">Returns the current locale for the supplied context.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>context</code> - The context to get the resources.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The current locale for the supplied context.</dd>
 </dl>
 </li>
 </ul>
