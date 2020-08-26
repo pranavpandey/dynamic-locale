@@ -8,8 +8,7 @@
 
 A library to perform runtime locale changes on Android 4.1 (API 16) and above devices.
 
-> It uses [AndroidX](https://developer.android.com/jetpack/androidx/) so, first
-[migrate](https://developer.android.com/jetpack/androidx/migrate) your project to AndroidX.
+> It uses [AndroidX][androidx] so, first [migrate][androidx-migrate] your project to AndroidX.
 
 ---
 
@@ -31,7 +30,7 @@ It can be installed by adding the following dependency to your `build.gradle` fi
 ```groovy
 dependencies {
     // For AndroidX enabled projects.
-    implementation 'com.pranavpandey.android:dynamic-locale:1.1.0'
+    implementation 'com.pranavpandey.android:dynamic-locale:1.1.1'
 }
 ```
 
@@ -39,24 +38,24 @@ dependencies {
 
 ## Usage
 
-[DynamicLocale][dynamic locale] is an interface that can be implemented in the 
-[Application][dynamic application] or [Activity][dynamic activity] class to provide the modified 
+[DynamicLocale][dynamic-locale] is an interface that can be implemented in the
+[Application][dynamic-application] or [Activity][dynamic-activity] class to provide the modified
 base `context`. It has optional feature to provide `font scale` to make the text smaller or larger. 
 It would be beneficial for some specific locales and theme styles.
 
-> For complete reference, please read the [documentation](https://pranavpandey.github.io/dynamic-locale).
+> For complete reference, please read the [documentation][documentation].
 
 ### Application
 
 Implement the `DynamicLocale` interface for the `Application` class by using the 
-[DynamicLocaleUtils][dynamic locale utils] helper class and register it in the `AndroidManifest` 
+[DynamicLocaleUtils][dynamic-locale-utils] helper class and register it in the `AndroidManifest`
 to apply the locale at runtime.
 
 > While using it for the application class, you should update the `context` when user 
 > configuration changes as Android caches the application in the memory and the 
 > `attachBaseContext(Context)` might not be called each time. 
 >
-> Please check an example [here][dynamic application example].
+> Please check an example [here][dynamic-application-example].
 
 ```java
 public class DynamicApp extends Application implements DynamicLocale {
@@ -170,9 +169,13 @@ Pranav Pandey
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-    
-[dynamic locale]: https://github.com/pranavpandey/dynamic-locale/blob/master/dynamic-locale/src/main/java/com/pranavpandey/android/dynamic/locale/DynamicLocale.java
-[dynamic application]: https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/DynamicApplication.java
-[dynamic application example]: https://github.com/pranavpandey/dynamic-support/blob/5d94b3e700e49b55008069f42763965f6d3bf033/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/DynamicApplication.java#L206
-[dynamic activity]: https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/activity/DynamicSystemActivity.java
-[dynamic locale utils]: https://github.com/pranavpandey/dynamic-locale/blob/master/dynamic-locale/src/main/java/com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.java
+
+
+[androidx]: https://developer.android.com/jetpack/androidx
+[androidx-migrate]: https://developer.android.com/jetpack/androidx/migrate
+[documentation]: https://pranavpandey.github.io/dynamic-locale
+[dynamic-locale]: https://github.com/pranavpandey/dynamic-locale/blob/master/dynamic-locale/src/main/java/com/pranavpandey/android/dynamic/locale/DynamicLocale.java
+[dynamic-application]: https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/DynamicApplication.java
+[dynamic-application-example]: https://github.com/pranavpandey/dynamic-support/blob/5d94b3e700e49b55008069f42763965f6d3bf033/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/DynamicApplication.java#L206
+[dynamic-activity]: https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/activity/DynamicSystemActivity.java
+[dynamic-locale-utils]: https://github.com/pranavpandey/dynamic-locale/blob/master/dynamic-locale/src/main/java/com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.java

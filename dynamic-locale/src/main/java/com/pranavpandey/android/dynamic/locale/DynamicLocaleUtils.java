@@ -43,32 +43,32 @@ public class DynamicLocaleUtils {
     public static final String ADS_LOCALE_SYSTEM = "ads_locale_system";
 
     /**
-     * Constant value for the Spanish (Español) locale.
+     * Constant value for the Spanish locale.
      */
     public static final String ADS_LOCALE_SPANISH = "es";
 
     /**
-     * Constant value for the Hindi (हिंदी) locale.
+     * Constant value for the Hindi locale.
      */
     public static final String ADS_LOCALE_HINDI = "hi";
 
     /**
-     * Constant value for the Indonesian (Indonesia) locale.
+     * Constant value for the Indonesian locale.
      */
     public static final String ADS_LOCALE_INDONESIA = "in";
 
     /**
-     * Constant value for the Russian (Русский) locale.
+     * Constant value for the Russian locale.
      */
     public static final String ADS_LOCALE_RUSSIAN = "ru";
 
     /**
-     * Constant value for the Portuguese (Português) locale.
+     * Constant value for the Portuguese locale.
      */
     public static final String ADS_LOCALE_PORTUGUESE = "pt";
 
     /**
-     * Constant value for the Turkish (Türkçe) locale.
+     * Constant value for the Turkish locale.
      */
     public static final String ADS_LOCALE_TURKISH = "tr";
 
