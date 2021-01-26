@@ -17,6 +17,7 @@
 package com.pranavpandey.android.dynamic.locale;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -35,6 +36,7 @@ import java.util.Locale;
 /**
  * Helper class to perform various locale operations.
  */
+@SuppressWarnings("deprecation")
 public class DynamicLocaleUtils {
 
     /**
@@ -164,6 +166,29 @@ public class DynamicLocaleUtils {
      * Set the locale for a given context.
      *
      * @param context The context to set the locale.
+     * @param activity {@code true} if the context an instance of {@link Activity}.
+     * @param locale The locale to be used for the context resources.
+     * @param fontScale The font scale to be used for the context resources.
+     *
+     * @return The modified context after applying the locale.
+     */
+    public static @NonNull Context setLocale(@NonNull Context context,
+            boolean activity, @Nullable Locale locale, float fontScale) {
+        if (locale == null) {
+            return context;
+        }
+
+        if (DynamicSdkUtils.is17()) {
+            return updateResources(context, activity, locale, fontScale);
+        }
+
+        return updateResourcesLegacy(context, locale, fontScale);
+    }
+
+    /**
+     * Set the locale for a given context.
+     *
+     * @param context The context to set the locale.
      * @param locale The locale to be used for the context resources.
      * @param fontScale The font scale to be used for the context resources.
      *
@@ -171,21 +196,39 @@ public class DynamicLocaleUtils {
      */
     public static @NonNull Context setLocale(@NonNull Context context,
             @Nullable Locale locale, float fontScale) {
-        if (locale == null) {
-            return context;
+        return setLocale(context, true, locale, fontScale);
+    }
+
+    /**
+     * Set the locale for a given configuration.
+     *
+     * @param config The config to set the locale.
+     * @param locale The locale to be used for the context resources.
+     * @param fontScale The font scale to be used for the context resources.
+     *
+     * @return The modified context after applying the locale.
+     */
+    @TargetApi(Build.VERSION_CODES.N)
+    public static @NonNull Configuration setLocale(@NonNull Configuration config,
+            @Nullable Locale locale, float fontScale) {
+        config.fontScale = fontScale;
+
+        if (locale != null) {
+            if (DynamicSdkUtils.is17()) {
+                config.setLocale(locale);
+            } else {
+                config.locale = locale;
+            }
         }
 
-        if (DynamicSdkUtils.is17()) {
-            return updateResources(context, locale, fontScale);
-        }
-
-        return updateResourcesLegacy(context, locale, fontScale);
+        return config;
     }
 
     /**
      * Update resources for a given context after setting the locale on API 17 and above devices.
      *
      * @param context The context to set the updated resources.
+     * @param activity {@code true} if the context an instance of {@link Activity}.
      * @param locale The locale to be used for the context resources.
      * @param fontScale The font scale to be used for the context resources.
      *
@@ -193,21 +236,23 @@ public class DynamicLocaleUtils {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private static @NonNull Context updateResources(@NonNull Context context,
-            @NonNull Locale locale, float fontScale) {
+            boolean activity, @NonNull Locale locale, float fontScale) {
         Configuration configuration = new Configuration(
                 context.getResources().getConfiguration());
-        configuration.setToDefaults();
-
+        configuration.fontScale = fontScale;
         configuration.setLocale(locale);
         configuration.setLayoutDirection(locale);
-        configuration.fontScale = Resources.getSystem().getConfiguration().fontScale * fontScale;
-        context.createConfigurationContext(configuration);
 
-        // Hack to fix the dialog fragment layout issue on configuration change.
-        context.getResources().updateConfiguration(configuration,
-                context.getResources().getDisplayMetrics());
-
-        return context;
+        if (activity) {
+            // Fix for app compat 1.2.0.
+            return context.createConfigurationContext(configuration);
+        } else {
+            // Fix for application font scale.
+            context.createConfigurationContext(configuration);
+            context.getResources().updateConfiguration(configuration,
+                    context.getResources().getDisplayMetrics());
+            return context;
+        }
     }
 
     /**
@@ -222,16 +267,12 @@ public class DynamicLocaleUtils {
      */
     private static @NonNull Context updateResourcesLegacy(@NonNull Context context,
             @NonNull Locale locale, float fontScale) {
-        Configuration configuration = new Configuration(
-                context.getResources().getConfiguration());
-
-        Locale.setDefault(locale);
+        Resources res = context.getResources();
+        Configuration configuration = new Configuration(res.getConfiguration());
+        configuration.fontScale = fontScale;
         configuration.locale = locale;
-        configuration.fontScale = Resources.getSystem().getConfiguration().fontScale * fontScale;
 
-        context.getResources().updateConfiguration(configuration,
-                context.getResources().getDisplayMetrics());
-
+        context.getResources().updateConfiguration(configuration, res.getDisplayMetrics());
         return context;
     }
 
