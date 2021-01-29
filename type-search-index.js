@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.pranavpandey.android.dynamic.locale","l":"DynamicLocale"},{"p":"androidx.appcompat.app","l":"DynamicLocaleDelegate"},{"p":"com.pranavpandey.android.dynamic.locale","l":"DynamicLocaleUtils"}]
