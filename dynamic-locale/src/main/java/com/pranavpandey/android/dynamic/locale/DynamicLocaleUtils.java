@@ -36,48 +36,7 @@ import java.util.Locale;
 /**
  * Helper class to perform various locale operations.
  */
-@SuppressWarnings("deprecation")
 public class DynamicLocaleUtils {
-
-    /**
-     * Constant value for the system locale.
-     */
-    public static final String ADS_LOCALE_SYSTEM = "ads_locale_system";
-
-    /**
-     * Constant value for the Spanish locale.
-     */
-    public static final String ADS_LOCALE_SPANISH = "es";
-
-    /**
-     * Constant value for the Hindi locale.
-     */
-    public static final String ADS_LOCALE_HINDI = "hi";
-
-    /**
-     * Constant value for the Indonesian locale.
-     */
-    public static final String ADS_LOCALE_INDONESIA = "in";
-
-    /**
-     * Constant value for the Russian locale.
-     */
-    public static final String ADS_LOCALE_RUSSIAN = "ru";
-
-    /**
-     * Constant value for the Portuguese locale.
-     */
-    public static final String ADS_LOCALE_PORTUGUESE = "pt";
-
-    /**
-     * Constant value for the Turkish locale.
-     */
-    public static final String ADS_LOCALE_TURKISH = "tr";
-
-    /**
-     * Dynamic locale splitter to separate language, country, etc.
-     */
-    public static final String ADE_LOCALE_SPLIT = ",";
 
     /**
      * Returns the layout direction for the selected locale.
@@ -112,14 +71,14 @@ public class DynamicLocaleUtils {
      * @return The converted locale from the locale string.
      *         <p>Return {@code null} for the default locale value.
      *
-     * @see #ADS_LOCALE_SYSTEM
+     * @see DynamicLocale#SYSTEM
      */
     public static @Nullable Locale toLocale(@Nullable String locale) {
         Locale localeWithRegion;
-        if (locale == null || locale.equals(DynamicLocaleUtils.ADS_LOCALE_SYSTEM)) {
+        if (locale == null || locale.equals(DynamicLocale.SYSTEM)) {
             localeWithRegion = null;
         } else {
-            String[] localeFormat = locale.split(ADE_LOCALE_SPLIT);
+            String[] localeFormat = locale.split(DynamicLocale.SPLIT);
             localeWithRegion = new Locale(localeFormat[0]);
             if (localeFormat.length > 1) {
                 localeWithRegion = new Locale(localeFormat[0], localeFormat[1]);

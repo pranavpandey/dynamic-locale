@@ -30,6 +30,46 @@ import java.util.Locale;
 public interface DynamicLocale {
 
     /**
+     * Constant value for the system locale.
+     */
+    String SYSTEM = "ads_locale_system";
+
+    /**
+     * Constant value for the Spanish locale.
+     */
+    String SPANISH = "es";
+
+    /**
+     * Constant value for the Hindi locale.
+     */
+    String HINDI = "hi";
+
+    /**
+     * Constant value for the Indonesian locale.
+     */
+    String INDONESIA = "in";
+
+    /**
+     * Constant value for the Russian locale.
+     */
+    String RUSSIAN = "ru";
+
+    /**
+     * Constant value for the Portuguese locale.
+     */
+    String PORTUGUESE = "pt";
+
+    /**
+     * Constant value for the Turkish locale.
+     */
+    String TURKISH = "tr";
+
+    /**
+     * Dynamic locale splitter to separate language, country, etc.
+     */
+    String SPLIT = ",";
+
+    /**
      * Returns an array of supported locales.
      *
      * @return The array of supported locales.
