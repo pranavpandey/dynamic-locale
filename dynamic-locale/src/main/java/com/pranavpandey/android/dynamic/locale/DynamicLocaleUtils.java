@@ -167,6 +167,7 @@ public class DynamicLocaleUtils {
      *
      * @return The modified context after applying the locale.
      */
+    @SuppressWarnings("deprecation")
     @TargetApi(Build.VERSION_CODES.N)
     public static @NonNull Configuration setLocale(@NonNull Configuration config,
             @Nullable Locale locale, float fontScale) {
@@ -193,6 +194,7 @@ public class DynamicLocaleUtils {
      *
      * @return The modified context after applying the locale.
      */
+    @SuppressWarnings("deprecation")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private static @NonNull Context updateResources(@NonNull Context context,
             boolean activity, @NonNull Locale locale, float fontScale) {
@@ -224,6 +226,7 @@ public class DynamicLocaleUtils {
      *
      * @return The modified context after applying the locale.
      */
+    @SuppressWarnings("deprecation")
     private static @NonNull Context updateResourcesLegacy(@NonNull Context context,
             @NonNull Locale locale, float fontScale) {
         Resources res = context.getResources();
