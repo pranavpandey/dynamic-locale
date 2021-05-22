@@ -4,9 +4,9 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![Build Status](https://travis-ci.org/pranavpandey/dynamic-locale.svg?branch=master)](https://travis-ci.org/pranavpandey/dynamic-locale)
-[![Download](https://api.bintray.com/packages/pranavpandey/android/dynamic-locale/images/download.svg)](https://bintray.com/pranavpandey/android/dynamic-locale/_latestVersion)
+[![Release](https://img.shields.io/maven-central/v/com.pranavpandey.android/dynamic-locale)](https://search.maven.org/artifact/com.pranavpandey.android/dynamic-locale)
 
-A library to perform runtime locale changes on Android 4.1 (API 16) and above devices.
+A library to perform runtime locale changes on Android 4.1 (API 16) and above.
 
 > It uses [AndroidX][androidx] so, first [migrate][androidx-migrate] your project to AndroidX.
 
