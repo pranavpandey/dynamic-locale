@@ -29,7 +29,7 @@ import androidx.core.os.ConfigurationCompat;
 import androidx.core.text.TextUtilsCompat;
 import androidx.core.view.ViewCompat;
 
-import com.pranavpandey.android.dynamic.utils.DynamicSdkUtils;
+import com.pranavpandey.android.dynamic.util.DynamicSdkUtils;
 
 import java.util.Locale;
 
