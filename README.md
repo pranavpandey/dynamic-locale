@@ -9,6 +9,8 @@
 A library to perform runtime locale changes on Android 4.1 (API 16) and above.
 
 > It uses [AndroidX][androidx] so, first [migrate][androidx-migrate] your project to AndroidX.
+<br/>Since v2.1.0, it is dependent on Java 8 due to the dependency on
+[Dynamic Utils](https://github.com/pranavpandey/dynamic-utils).
 
 ---
 
