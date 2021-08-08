@@ -41,6 +41,8 @@ public class DynamicLocaleUtils {
     /**
      * Returns the layout direction for the selected locale.
      *
+     * @param context The context to be used.
+     *
      * @return The layout direction for the selected locale.
      *
      * @see ViewCompat#LAYOUT_DIRECTION_LTR
@@ -48,19 +50,35 @@ public class DynamicLocaleUtils {
      * @see ViewCompat#LAYOUT_DIRECTION_INHERIT
      * @see ViewCompat#LAYOUT_DIRECTION_LOCALE
      */
-    public static int getLayoutDirection() {
-        return TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault());
+    public static int getLayoutDirection(@Nullable Context context) {
+        return TextUtilsCompat.getLayoutDirectionFromLocale(context != null
+                ? getCurrentLocale(context) : Locale.getDefault());
     }
 
     /**
-     * Checks whether the layout is RTL (right-to-left).
+     * Checks whether the layout direction is RTL (right-to-left).
      *
-     * @return {@code true} if the layout is RTL (right-to-left).
+     * @param context The context to be used.
      *
+     * @return {@code true} if the layout direction is RTL (right-to-left).
+     *
+     * @see #getLayoutDirection(Context)
      * @see ViewCompat#LAYOUT_DIRECTION_RTL
      */
+    public static boolean isLayoutRtl(@Nullable Context context) {
+        return DynamicSdkUtils.is17() && getLayoutDirection(context)
+                == ViewCompat.LAYOUT_DIRECTION_RTL;
+    }
+
+    /**
+     * Checks whether the layout direction is RTL (right-to-left).
+     *
+     * @return {@code true} if the layout direction is RTL (right-to-left).
+     *
+     * @see #isLayoutRtl(Context)
+     */
     public static boolean isLayoutRtl() {
-        return DynamicSdkUtils.is17() && getLayoutDirection() == ViewCompat.LAYOUT_DIRECTION_RTL;
+        return isLayoutRtl(null);
     }
 
     /**
