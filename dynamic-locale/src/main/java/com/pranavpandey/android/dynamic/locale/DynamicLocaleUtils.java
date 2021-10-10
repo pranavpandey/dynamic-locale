@@ -122,6 +122,7 @@ public class DynamicLocaleUtils {
         } else {
             Locale defaultLocale = ConfigurationCompat.getLocales(
                     Resources.getSystem().getConfiguration()).getFirstMatch(supportedLocales);
+
             return defaultLocale != null ? defaultLocale : Locale.getDefault();
         }
     }
@@ -230,6 +231,7 @@ public class DynamicLocaleUtils {
             context.createConfigurationContext(configuration);
             context.getResources().updateConfiguration(configuration,
                     context.getResources().getDisplayMetrics());
+
             return context;
         }
     }
