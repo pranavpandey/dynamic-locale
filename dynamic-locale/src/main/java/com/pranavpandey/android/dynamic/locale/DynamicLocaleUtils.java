@@ -115,16 +115,17 @@ public class DynamicLocaleUtils {
      * @return The default locale according to the supported locales.
      */
     public static @NonNull Locale getDefaultLocale(
-            @NonNull Context context, @Nullable String[] supportedLocales) {
+            @Nullable Context context, @Nullable String[] supportedLocales) {
+        Locale defaultLocale;
         if (supportedLocales == null) {
-            return ConfigurationCompat.getLocales(
+            defaultLocale = ConfigurationCompat.getLocales(
                     Resources.getSystem().getConfiguration()).get(0);
         } else {
-            Locale defaultLocale = ConfigurationCompat.getLocales(
+            defaultLocale = ConfigurationCompat.getLocales(
                     Resources.getSystem().getConfiguration()).getFirstMatch(supportedLocales);
-
-            return defaultLocale != null ? defaultLocale : Locale.getDefault();
         }
+
+        return defaultLocale != null ? defaultLocale : Locale.getDefault();
     }
 
     /**
@@ -264,7 +265,14 @@ public class DynamicLocaleUtils {
      *
      * @return The current locale for the supplied context.
      */
-    public static @NonNull Locale getCurrentLocale(@NonNull Context context) {
-        return ConfigurationCompat.getLocales(context.getResources().getConfiguration()).get(0);
+    public static @NonNull Locale getCurrentLocale(@Nullable Context context) {
+        Locale currentLocale;
+        if ((currentLocale = ConfigurationCompat.getLocales(context != null
+                ? context.getResources().getConfiguration()
+                : Resources.getSystem().getConfiguration()).get(0)) != null) {
+            return currentLocale;
+        }
+
+        return Locale.getDefault();
     }
 }
