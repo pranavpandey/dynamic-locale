@@ -18,6 +18,7 @@ package com.pranavpandey.android.dynamic.locale;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.LocaleManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -25,6 +26,7 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.core.os.ConfigurationCompat;
 import androidx.core.text.TextUtilsCompat;
 import androidx.core.view.ViewCompat;
@@ -37,6 +39,22 @@ import java.util.Locale;
  * Helper class to perform various locale operations.
  */
 public class DynamicLocaleUtils {
+
+    /**
+     * Returns the locale manager on API 33.
+     *
+     * @param context The context to be used.
+     *
+     * @return The locale manager on API 33.
+     */
+    @TargetApi(Build.VERSION_CODES.TIRAMISU)
+    public static @Nullable LocaleManager getLocaleManager(@Nullable Context context) {
+        if (!DynamicSdkUtils.is33() || context == null) {
+            return null;
+        }
+
+        return ContextCompat.getSystemService(context, LocaleManager.class);
+    }
 
     /**
      * Returns the layout direction for the selected locale.
@@ -114,8 +132,18 @@ public class DynamicLocaleUtils {
      *
      * @return The default locale according to the supported locales.
      */
+    @TargetApi(Build.VERSION_CODES.TIRAMISU)
     public static @NonNull Locale getDefaultLocale(
             @Nullable Context context, @Nullable String[] supportedLocales) {
+        if (DynamicSdkUtils.is33()) {
+            LocaleManager localeManager;
+            if ((localeManager = getLocaleManager(context)) != null) {
+                return supportedLocales != null
+                        ? localeManager.getApplicationLocales().getFirstMatch(supportedLocales)
+                        : localeManager.getApplicationLocales().get(0);
+            }
+        }
+
         Locale defaultLocale;
         if (supportedLocales == null) {
             defaultLocale = ConfigurationCompat.getLocales(
@@ -151,6 +179,7 @@ public class DynamicLocaleUtils {
      *
      * @return The modified context after applying the locale.
      */
+    @TargetApi(Build.VERSION_CODES.TIRAMISU)
     public static @NonNull Context setLocale(@NonNull Context context,
             boolean activity, @Nullable Locale locale, float fontScale) {
         if (locale == null) {
@@ -158,6 +187,13 @@ public class DynamicLocaleUtils {
         }
 
         if (DynamicSdkUtils.is17()) {
+//            if (DynamicSdkUtils.is33()) {
+//                LocaleManager localeManager;
+//                if ((localeManager = getLocaleManager(context)) != null) {
+//                    localeManager.setApplicationLocales(new LocaleList(locale));
+//                }
+//            }
+
             return updateResources(context, activity, locale, fontScale);
         }
 

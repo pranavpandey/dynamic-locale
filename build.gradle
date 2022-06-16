@@ -20,7 +20,7 @@ buildscript {
             'minSdk'    : 16,
             'targetSdk' : 33,
             'buildTools': '33.0.0',
-            'appcompat' : '1.2.0',
+            'appcompat' : '1.6.0-alpha05',
             'dynamic'   : '4.4.3'
     ]
 
