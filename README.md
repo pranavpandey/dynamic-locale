@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-locale/master/graphics/dynamic-locale.png" width="160" height="160" align="right" hspace="20">
+<img src="./graphics/icon.png" width="160" height="160" align="right" hspace="20">
 
 # Dynamic Locale
 
