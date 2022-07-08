@@ -16,12 +16,12 @@ A library to perform runtime locale changes on Android 4.1 (API 16) and above.
 
 ## Contents
 
-- [Installation](https://github.com/pranavpandey/dynamic-locale#installation)
-- [Usage](https://github.com/pranavpandey/dynamic-locale#usage)
-    - [Application](https://github.com/pranavpandey/dynamic-locale#application)
-    - [Activity](https://github.com/pranavpandey/dynamic-locale#activity)
-    - [Dependency](https://github.com/pranavpandey/dynamic-locale#dependency)
-- [License](https://github.com/pranavpandey/dynamic-locale#license)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Application](#application)
+    - [Activity](#activity)
+    - [Dependency](#dependency)
+- [License](#license)
 
 ---
 
@@ -141,8 +141,8 @@ public class DynamicActivity extends Activity implements DynamicLocale {
 
 ### Dependency
 
-It depends on the [dynamic-utils](https://github.com/pranavpandey/dynamic-utils) to perform
-various internal operations. So, its functions can also be used to perform other useful operations.
+It depends on the [dynamic-utils][dynamic-utils] to perform various internal operations. 
+So, its functions can also be used to perform other useful operations.
 
 ---
 
@@ -181,3 +181,4 @@ Pranav Pandey
 [dynamic-application-example]: https://github.com/pranavpandey/dynamic-support/blob/5d94b3e700e49b55008069f42763965f6d3bf033/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/DynamicApplication.java#L206
 [dynamic-activity]: https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/activity/DynamicSystemActivity.java
 [dynamic-locale-utils]: https://github.com/pranavpandey/dynamic-locale/blob/master/dynamic-locale/src/main/java/com/pranavpandey/android/dynamic/locale/DynamicLocaleUtils.java
+[dynamic-utils]: https://github.com/pranavpandey/dynamic-utils
