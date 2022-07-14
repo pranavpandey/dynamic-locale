@@ -40,18 +40,18 @@ dependencies {
 
 ## Usage
 
-[DynamicLocale][dynamic-locale] is an interface that can be implemented in the
-[Application][dynamic-application] or [Activity][dynamic-activity] class to provide the modified
+It provides an [interface][dynamic-locale] that can be implemented in the 
+[application][dynamic-application] or [activity][dynamic-activity] class to provide the modified
 base `context`. It has optional feature to provide `font scale` to make the text smaller or larger. 
 It would be beneficial for some specific locales and theme styles.
 
-> For complete reference, please read the [documentation][documentation].
+> For a complete reference, please read the [documentation][documentation].
 
 ### Application
 
-Implement the `DynamicLocale` interface for the `Application` class by using the 
-[DynamicLocaleUtils][dynamic-locale-utils] helper class and register it in the `AndroidManifest`
-to apply the locale at runtime.
+Implement the `DynamicLocale` interface for the `application` class by using the 
+[helper][dynamic-locale-utils] class and register it in the `AndroidManifest` to apply 
+the locale at runtime.
 
 > While using it for the application class, you should update the `context` when user 
 > configuration changes as Android caches the application in the memory and the 
@@ -112,7 +112,7 @@ public class DynamicApp extends Application implements DynamicLocale {
 
 ### Activity
 
-Similarly, it can be used for the `Activity` to apply locale at runtime.
+Similarly, it can be used for the `activity` to apply locale at runtime.
 
 > You should `recreate()` the activity when user configuration changes.
 
