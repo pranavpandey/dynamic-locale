@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.LocaleList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +40,16 @@ import java.util.Locale;
  * Helper class to perform various locale operations.
  */
 public class DynamicLocaleUtils {
+
+    /**
+     * Default value to set application locale on API 33 and above.
+     */
+    private static final boolean ADL_SYSTEM = false;
+
+    /**
+     * Default value to update activity resources on legacy devices.
+     */
+    private static final boolean ADL_ACTIVITY = true;
 
     /**
      * Returns the locale manager on API 33.
@@ -137,21 +148,17 @@ public class DynamicLocaleUtils {
             @Nullable Context context, @Nullable String[] supportedLocales) {
         if (DynamicSdkUtils.is33()) {
             LocaleManager localeManager;
-            if ((localeManager = getLocaleManager(context)) != null) {
+            if ((localeManager = getLocaleManager(context)) != null
+                    && !localeManager.getApplicationLocales().isEmpty()) {
                 return supportedLocales != null
                         ? localeManager.getApplicationLocales().getFirstMatch(supportedLocales)
                         : localeManager.getApplicationLocales().get(0);
             }
         }
 
-        Locale defaultLocale;
-        if (supportedLocales == null) {
-            defaultLocale = ConfigurationCompat.getLocales(
-                    Resources.getSystem().getConfiguration()).get(0);
-        } else {
-            defaultLocale = ConfigurationCompat.getLocales(
-                    Resources.getSystem().getConfiguration()).getFirstMatch(supportedLocales);
-        }
+        Locale defaultLocale = supportedLocales != null ? ConfigurationCompat.getLocales(
+                Resources.getSystem().getConfiguration()).getFirstMatch(supportedLocales)
+                : ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
 
         return defaultLocale != null ? defaultLocale : Locale.getDefault();
     }
@@ -176,23 +183,26 @@ public class DynamicLocaleUtils {
      * @param activity {@code true} if the context an instance of {@link Activity}.
      * @param locale The locale to be used for the context resources.
      * @param fontScale The font scale to be used for the context resources.
+     * @param system {@code true} to set application locales on API 33 and above.
      *
      * @return The modified context after applying the locale.
+     *
+     * @see LocaleManager#setApplicationLocales(LocaleList)
      */
     @TargetApi(Build.VERSION_CODES.TIRAMISU)
     public static @NonNull Context setLocale(@NonNull Context context,
-            boolean activity, @Nullable Locale locale, float fontScale) {
+            boolean activity, @Nullable Locale locale, float fontScale, boolean system) {
         if (locale == null) {
             return context;
         }
 
         if (DynamicSdkUtils.is17()) {
-//            if (DynamicSdkUtils.is33()) {
-//                LocaleManager localeManager;
-//                if ((localeManager = getLocaleManager(context)) != null) {
-//                    localeManager.setApplicationLocales(new LocaleList(locale));
-//                }
-//            }
+            if (system && DynamicSdkUtils.is33()) {
+                LocaleManager localeManager;
+                if ((localeManager = getLocaleManager(context)) != null) {
+                    localeManager.setApplicationLocales(new LocaleList(locale));
+                }
+            }
 
             return updateResources(context, activity, locale, fontScale);
         }
@@ -204,14 +214,51 @@ public class DynamicLocaleUtils {
      * Set the locale for a given context.
      *
      * @param context The context to set the locale.
+     * @param activity {@code true} if the context an instance of {@link Activity}.
      * @param locale The locale to be used for the context resources.
      * @param fontScale The font scale to be used for the context resources.
      *
      * @return The modified context after applying the locale.
+     *
+     * @see #setLocale(Context, boolean, Locale, float, boolean)
+     */
+    @TargetApi(Build.VERSION_CODES.TIRAMISU)
+    public static @NonNull Context setLocale(@NonNull Context context,
+            boolean activity, @Nullable Locale locale, float fontScale) {
+        return setLocale(context, activity, locale, fontScale, ADL_SYSTEM);
+    }
+
+    /**
+     * Set the locale for a given context.
+     *
+     * @param context The context to set the locale.
+     * @param locale The locale to be used for the context resources.
+     * @param fontScale The font scale to be used for the context resources.
+     * @param system {@code true} to set application locales on API 33 and above.
+     *
+     * @return The modified context after applying the locale.
+     *
+     * @see #setLocale(Context, boolean, Locale, float, boolean)
+     */
+    public static @NonNull Context setLocale(@NonNull Context context,
+            @Nullable Locale locale, float fontScale, boolean system) {
+        return setLocale(context, ADL_ACTIVITY, locale, fontScale, system);
+    }
+
+    /**
+     * Set the locale for a given context.
+     *
+     * @param context The context to set the locale.
+     * @param locale The locale to be used for the context resources.
+     * @param fontScale The font scale to be used for the context resources.
+     *
+     * @return The modified context after applying the locale.
+     *
+     * @see #setLocale(Context, Locale, float, boolean)
      */
     public static @NonNull Context setLocale(@NonNull Context context,
             @Nullable Locale locale, float fontScale) {
-        return setLocale(context, true, locale, fontScale);
+        return setLocale(context, locale, fontScale, ADL_SYSTEM);
     }
 
     /**
