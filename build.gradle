@@ -20,8 +20,8 @@ buildscript {
             'minSdk'    : 16,
             'targetSdk' : 33,
             'buildTools': '33.0.0',
-            'appcompat' : '1.6.0-beta01',
-            'dynamic'   : '4.4.3'
+            'appcompat' : '1.6.0-rc01',
+            'dynamic'   : '4.4.6'
     ]
 
     repositories {
