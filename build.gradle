@@ -20,7 +20,7 @@ buildscript {
             'minSdk'    : 16,
             'targetSdk' : 33,
             'buildTools': '33.0.1',
-            'appcompat' : '1.6.0-rc01',
+            'appcompat' : '1.6.0',
             'dynamic'   : '4.4.6'
     ]
 
@@ -41,7 +41,7 @@ plugins {
 allprojects {
     repositories {
         mavenCentral()
-        google()\
+        google()
     }
 }
 
