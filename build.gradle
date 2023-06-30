@@ -21,7 +21,8 @@ buildscript {
             'targetSdk' : 34,
             'buildTools': '34.0.0',
             'appcompat' : '1.6.1',
-            'dynamic'   : '4.4.8'
+            'dynamic'   : '4.5.0',
+            'kotlin'    : '1.8.22'
     ]
 
     repositories {
