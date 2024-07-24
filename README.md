@@ -12,6 +12,7 @@ A library to perform runtime locale changes on Android 4.1 (API 16) and above.
 <br/>Since v2.1.0, it is dependent on Java 8 due to the dependency on
 [Dynamic Utils](https://github.com/pranavpandey/dynamic-utils).
 <br/>Since v2.4.1, it is targeting Java 17 to provide maximum compatibility.
+<br/>Since v2.5.0, the minimum SDK is Android 4.4 (API 19) to comply with the latest policies.
 
 ---
 
@@ -33,7 +34,7 @@ It can be installed by adding the following dependency to your `build.gradle` fi
 ```groovy
 dependencies {
     // For AndroidX enabled projects.
-    implementation 'com.pranavpandey.android:dynamic-locale:2.4.1'
+    implementation 'com.pranavpandey.android:dynamic-locale:2.5.0'
 }
 ```
 
